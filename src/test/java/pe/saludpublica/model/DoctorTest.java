@@ -87,4 +87,22 @@ class DoctorTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Conservar los atributos del doctor después de construirlo")
+    void shouldPreserveDoctorAttributesAfterConstruction() {
+        Doctor doctor = new Doctor(
+                "87654321",
+                "Luis",
+                "Torres",
+                "CMP67890",
+                "ESP-002"
+        );
+
+        assertEquals("87654321", doctor.getDocumento());
+        assertEquals("Luis", doctor.getNombres());
+        assertEquals("Torres", doctor.getApellidos());
+        assertEquals("CMP67890", doctor.getColegiatura());
+        assertEquals("ESP-002", doctor.getEspecialidad());
+    }
 }
