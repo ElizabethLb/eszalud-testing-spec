@@ -121,4 +121,23 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Conservar cada estado válido recibido por la cita")
+    void shouldPreserveValidAppointmentStatus() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 19, 10, 30);
+
+        for (EstadoCita estado : EstadoCita.values()) {
+            CitaMedica cita = new CitaMedica(
+                    "PAC-001",
+                    "DOC-001",
+                    "ESP-001",
+                    fechaHora,
+                    "Consulta de control",
+                    estado
+            );
+
+            assertEquals(estado, cita.getEstado());
+        }
+    }
 }
