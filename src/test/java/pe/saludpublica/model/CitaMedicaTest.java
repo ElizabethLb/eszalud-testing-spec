@@ -103,4 +103,22 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin estado")
+    void shouldRejectAppointmentWithoutStatus() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 19, 10, 30);
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-001",
+                        "DOC-001",
+                        "ESP-001",
+                        fechaHora,
+                        "Consulta de control",
+                        null
+                )
+        );
+    }
 }
